@@ -1,12 +1,13 @@
 <script>
+  import { dispatch } from '../store'
   import CityCard from '../components/CityCard.svelte'
   import { router } from 'tinro'
 
   let cities = ['Charleston, SC', 'New York, NY','San Francisco, CA']
 
   function changeCurrentCity(city) {
-    return () => {
-        console.log('city', city)
+    return async () => {
+        await dispatch({type: 'SET_CURRENT', payload: city})
         router.goto('/')
     }
   }

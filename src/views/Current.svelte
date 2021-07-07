@@ -5,6 +5,8 @@
   import { fahrenheitToCelsius, celsiusToFahrenheit } from 'temperature'
 
   import Weather from '../components/Weather.svelte'
+  import { store } from '../store'
+
     
   let weather = {
     city: 'Charleston, SC',
@@ -14,10 +16,11 @@
       foo: 'bar'
     
   }
-    
-  function getWeather() {
-    return getJSON('/api/weather?city=charleston,sc&country=us')
-    .then(results => ({
+
+    function getWeather() {
+      const current = $store.current.toLowerCase().replace(', ', ',')
+      return getJSON(`/api/weather?city=${current}&country=us`)
+        .then(results => ({
           temp: `${results.temp} &deg; C`,
           icon: results.weather.icon,
           description: results.weather.description,
