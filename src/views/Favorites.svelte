@@ -1,11 +1,13 @@
 <script>
   import CityCard from '../components/CityCard.svelte'
+  import { router } from 'tinro'
 
   let cities = ['Charleston, SC', 'New York, NY','San Francisco, CA']
 
   function changeCurrentCity(city) {
     return () => {
-      console.log('city', city)
+        console.log('city', city)
+        router.goto('/')
     }
   }
 </script>
