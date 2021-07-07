@@ -2,6 +2,8 @@
   import { dispatch } from '../store'
   import CityCard from '../components/CityCard.svelte'
   import { router } from 'tinro'
+  import { blur } from 'svelte/transition'
+
 
   let cities = ['Charleston, SC', 'New York, NY','San Francisco, CA']
 
@@ -12,6 +14,7 @@
     }
   }
 </script>
+<div in:blur={{delay: 1000, duration: 1000}}>
 <nav>
   <div>Favorites</div>
   <a href="">Add</a>
@@ -23,6 +26,7 @@
     {/each}
   </section>
 </main>
+</div>
 <style>
  nav {
    height: 24px;

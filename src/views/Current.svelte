@@ -6,6 +6,7 @@
 
   import Weather from '../components/Weather.svelte'
   import { store } from '../store'
+  import { fade } from 'svelte/transition'
 
     
   let weather = {
@@ -52,7 +53,7 @@
   </div>
   <a href="/favorites">Favorites</a>
 </nav>
-<main>
+<main transition:fade={{duration: 1000}}>
   {#await getWeather()}
     Loading...
   {:then weather}
